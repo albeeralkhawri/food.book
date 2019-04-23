@@ -1,0 +1,39 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row">
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul class=flashes>
+               {% for message in messages %}
+               <li>{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+      <h1>Saved Recipes</h1>
+      <p>Recipe count: {{ recipe_count }}</p>
+    <ul class="collapsible">
+    {% for savedrecipe in recipes_list %}
+        <li>
+
+        <div class="collapsible-header"><i class="material-icons">expand_more</i>{{ savedrecipe.recipe.recipe_name }}
+        </div>
+        <div class="collapsible-body">
+            <a class="btn-floating btn waves-effect waves-light teal" href="{{ url_for('recipe_detail', id=savedrecipe.recipe.id) }}"><i class="material-icons">navigate_next</i></a>
+            <span>{{ savedrecipe.recipe.recipe_description }}</span>
+            <a class="btn-floating btn waves-effect waves-light teal" href="{{ url_for('delete_saved_recipe', id=savedrecipe.id) }}"><i class="material-icons">delete</i></a>
+            <br><br>
+            {% if savedrecipe.recipe.image_url %}
+            <img class="materialboxed" src="{{ savedrecipe.recipe.image_url }}" alt="{{ savedrecipe.recipe.image_filename }}">
+            {% endif %}
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Previous page of recipes</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Next page of recipes</a>
+    {% endif %}
+</div>
+{% endblock %}

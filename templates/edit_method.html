@@ -1,0 +1,15 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row">
+    <h1>Edit Method</h1>
+    <form class="col s12" method="POST" action="{{ url_for('update_method', id=method.id) }}">
+
+    <div class="input-field col s12">
+        <label for="method" >Method:</label>
+        <input type="text" id="method" name="method" value="{{ method.method_description }}" required>
+    </div>
+    <div class="col s12">
+        <button class="waves-effect waves-light btn" onclick="M.toast({html: 'Method Updated!'})">Update method</button>
+    </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row">
+    <h1>Add Method</h1>
+    <form class="col s12" method="POST" action="{{ url_for('add_method', id=recipe.id) }}">
+    
+    <div class="input-field col s12">
+        <label for="method" >Method:</label>
+        <input type="text" id="method" name="method" required>
+    </div>
+    <div class="col s12">
+        <button class="waves-effect waves-light btn" onclick="M.toast({html: 'Method Added!'})">Add Method</button>
+    </div>
+    </form>
+</div>
+{% endblock %}

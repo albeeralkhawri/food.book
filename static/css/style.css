@@ -1,0 +1,31 @@
+.dc-chart g.row text {
+    fill: black;
+}
+
+.dc-chart text.pie-slice {fill: black;}
+
+@media only screen and (min-width: 993px) {
+    .container {
+      width: 90%;
+    }
+  }
+
+ .dropdown-content{
+   width: max-content !important;
+   height:auto !important;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+.error {
+  color: red
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}

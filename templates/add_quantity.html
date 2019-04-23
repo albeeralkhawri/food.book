@@ -1,0 +1,31 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row">
+    <h1>Add Ingredient</h1>
+    <form class="col s12" method="POST" action="{{ url_for('add_quantity', id=recipe.id) }}">
+
+    <div class="input-field col s12">
+        <label for="quantity" >Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+    </div>
+
+    <div class="col s12">
+        <label for="quantity_measurement" >Measurement:</label>
+        <select id="quantity_measurement" name="quantity_measurement">
+            <option value="" disabled selected>Choose your option</option>
+            {% for measurement in measurements_list %}
+            <option value="{{measurement.id}}">{{measurement.measurement_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="input-field col s12">
+        <label for="quantity_ingredient" >Ingredient:</label>
+        <input type="text" id="quantity_ingredient" name="quantity_ingredient" required>
+    </div>
+    
+    <div class="col s12">
+        <button class="waves-effect waves-light btn" onclick="M.toast({html: 'Ingredient Added!'})">Add Ingredient</button>
+    </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends 'base.html'%} {% block content %}
+<h1>Manage Categories</h1>
+<div class="row flex">
+<!-- Categories -->
+    <div class="col s12 m6 l4">
+      <div class="card-panel teal lighten-5">
+        <h5>Categories</h5>
+          <ul>
+    {% for category in categories_list %}
+        <li>{{ category.category_name }} <!-- Modal Trigger --><button class="waves-effect waves-light btn-flat modal-trigger" data-target="Category_{{ category.id }}"><i class="material-icons">edit</i></button></li>
+    {% endfor %}
+    </ul>
+          
+    {% for category in categories_list %}
+      <!-- Modal Structure -->
+      <div id="Category_{{ category.id }}" class="modal">
+        <div class="modal-content">
+          <h1>Edit Category</h1>
+            <form method="POST" action="{{ url_for('update_category', id=category.id) }}">
+
+                <label for="category" >Category Name:</label>
+                <input type="text" id="category" name="category" value="{{ category.category_name }}" required>
+
+                <button class="waves-effect waves-light btn">Update</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+      {% endfor %}
+    <form method="POST" action=/add_category>
+        <label for="category" >New Category:</label>
+        <input type="text" id="category" name="category" required>
+        <button class="waves-effect waves-light btn">Add</button>
+    </form>
+      </div>
+    </div>
+<!-- Courses -->
+    <div class="col s12 m6 l4">
+      <div class="card-panel teal lighten-5">
+        <h5>Courses</h5>
+    <ul>
+    {% for course in courses_list %}
+         <li>{{ course.course_name }} <!-- Modal Trigger --><button class="waves-effect waves-light btn-flat modal-trigger" data-target="Course_{{ course.id }}"><i class="material-icons">edit</i></button></li>
+    {% endfor %}
+    </ul>
+          
+    {% for course in courses_list %}
+      <!-- Modal Structure -->
+      <div id="Course_{{ course.id }}" class="modal">
+        <div class="modal-content">
+          <h1>Edit course</h1>
+            <form method="POST" action="{{ url_for('update_course', id=course.id) }}">
+
+                <label for="course" >course Name:</label>
+                <input type="text" id="course" name="course" value="{{ course.course_name }}" required>
+
+                <button class="waves-effect waves-light btn">Update</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+      {% endfor %}
+    <form method="POST" action=/add_course>
+        <label for="course" >New Course:</label>
+        <input type="text" id="course" name="course" required>
+        <button class="waves-effect waves-light btn">Add</button>
+    </form>
+      </div>
+    </div>
+    <!-- Cuisines -->
+    <div class="col s12 m6 l4">
+      <div class="card-panel teal lighten-5">
+        <h5>Cuisines</h5>
+    <ul>
+    {% for cuisine in cuisines_list %}
+        <li>{{ cuisine.cuisine_name }} <!-- Modal Trigger --><button class="waves-effect waves-light btn-flat modal-trigger" data-target="Cuisine_{{ cuisine.id }}"><i class="material-icons">edit</i></button></li>
+    {% endfor %}
+    </ul>
+          
+    {% for cuisine in cuisines_list %}
+      <!-- Modal Structure -->
+      <div id="Cuisine_{{ cuisine.id }}" class="modal">
+        <div class="modal-content">
+          <h1>Edit cuisine</h1>
+            <form method="POST" action="{{ url_for('update_cuisine', id=cuisine.id) }}">
+
+                <label for="cuisine" >cuisine Name:</label>
+                <input type="text" id="cuisine" name="cuisine" value="{{ cuisine.cuisine_name }}" required>
+
+                <button class="waves-effect waves-light btn">Update</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+      {% endfor %}
+    <form method="POST" action=/add_cuisine>
+        <label for="cuisine" >New Cuisine:</label>
+        <input type="text" id="cuisine" name="cuisine" required>
+        <button class="waves-effect waves-light btn">Add</button>
+    </form>
+      </div>
+    </div>
+    <!-- Countries -->
+    <div class="col s12 m6 l4">
+      <div class="card-panel teal lighten-5">
+        <h5>Countries</h5>
+    <ul>
+    {% for country in countries_list %}
+        <li>{{ country.country_name }} <!-- Modal Trigger --><button class="waves-effect waves-light btn-flat modal-trigger" data-target="Country_{{ country.id }}"><i class="material-icons">edit</i></button></li>
+    {% endfor %}
+    </ul>
+          
+    {% for country in countries_list %}
+      <!-- Modal Structure -->
+      <div id="Country_{{ country.id }}" class="modal">
+        <div class="modal-content">
+          <h1>Edit country</h1>
+            <form method="POST" action="{{ url_for('update_country', id=country.id) }}">
+
+                <label for="country" >country Name:</label>
+                <input type="text" id="country" name="country" value="{{ country.country_name }}" required>
+
+                <button class="waves-effect waves-light btn">Update</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+      {% endfor %}
+    <form method="POST" action=/add_country>
+        <label for="country" >New Country:</label>
+        <input type="text" id="country" name="country" required>
+        <button class="waves-effect waves-light btn">Add</button>
+    </form>
+        </span>
+      </div>
+    </div>
+  <!-- Authors -->
+    <div class="col s12 m6 l4">
+      <div class="card-panel teal lighten-5">
+        <h5>Authors</h5>
+    <ul>
+    {% for author in authors_list %}
+        <li>{{ author.author_name }}, {{ author.country.country_name }} <!-- Modal Trigger --><button class="waves-effect waves-light btn-flat modal-trigger" data-target="Author_{{ author.id }}"><i class="material-icons">edit</i></button></li>
+    {% endfor %}
+    </ul>
+          
+    {% for author in authors_list %}
+      <!-- Modal Structure -->
+      <div id="Author_{{ author.id }}" class="modal">
+        <div class="modal-content">
+          <h1>Edit author</h1>
+            <form method="POST" action="{{ url_for('update_author', id=author.id) }}">
+
+                <label for="author" >Author Name:</label>
+                <input type="text" id="author" name="author" value="{{ author.author_name }}" required>
+                
+                <label for="author_country" >Author Country:</label>
+                <select id="author_country" name="author_country">
+                {% for country in countries_list %}
+                <option value="{{country.id}}" {% if country.id==author.country_id %} SELECTED{% endif %}>{{country.country_name}}</option>
+                {% endfor %}
+            </select>
+
+                <button class="waves-effect waves-light btn">Update</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+      {% endfor %}
+    <form method="POST" action=/add_author>
+        <label for="author" >New Author Name:</label>
+        <input type="text" id="author" name="author" required>
+        <label for="author_country" >New Author Country:</label>
+        <!-- <input type="text" id="author_country" name="author_country" required> -->
+        <select id="author_country" name="author_country">
+            <option value="" disabled selected>Choose your option</option>
+            {% for country in countries_list %}
+            <option value="{{country.id}}">{{country.country_name}}</option>
+            {% endfor %}
+        </select>
+        <button class="waves-effect waves-light btn">Add</button>
+    </form>
+        </span>
+      </div>
+    </div>
+    <!-- Measurements -->
+    <div class="col s12 m6 l4">
+      <div class="card-panel teal lighten-5">
+        <h5>Measurements</h5>
+    <ul>
+    {% for measurement in measurements_list %}
+       <li>{{ measurement.measurement_name }} <!-- Modal Trigger --><button class="waves-effect waves-light btn-flat modal-trigger" data-target="Measurement_{{ measurement.id }}"><i class="material-icons">edit</i></button></li>
+    {% endfor %}
+    </ul>
+          
+    {% for measurement in measurements_list %}
+      <!-- Modal Structure -->
+      <div id="Measurement_{{ measurement.id }}" class="modal">
+        <div class="modal-content">
+          <h1>Edit measurement</h1>
+            <form method="POST" action="{{ url_for('update_measurement', id=measurement.id) }}">
+
+                <label for="measurement" >measurement Name:</label>
+                <input type="text" id="measurement" name="measurement" value="{{ measurement.measurement_name }}" required>
+
+                <button class="waves-effect waves-light btn">Update</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+        </div>
+      </div>
+      {% endfor %}
+    <form method="POST" action=/add_measurement>
+        <label for="measurement" >New Measurement:</label>
+        <input type="text" id="measurement" name="measurement" required>
+        <button class="waves-effect waves-light btn">Add</button>
+    </form>
+        </span>
+      </div>
+    </div>
+  
+  </div>
+    
+{% endblock %}

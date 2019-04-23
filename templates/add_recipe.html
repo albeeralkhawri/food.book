@@ -1,0 +1,82 @@
+{% extends 'base.html'%} {% block content %}
+<div class="row">
+    <h1>Add Recipe</h1>
+    <form class="col s12" method="POST" action="/add_recipe" enctype="multipart/form-data">
+    
+    <div class="input-field col s12 m6">
+        <label for="recipe_name" >Recipe Name:</label>
+        <input type="text" id="recipe_name" name="recipe_name" required>
+    </div>
+     
+    <div class="input-field col s12">
+        <label for="recipe_description" >Recipe Description:</label>
+        <input type="text" id="recipe_description" name="recipe_description" required>
+    </div>
+     
+    <div class="input-field col s12 m4">
+        <label for="preparation_time" >Preparation Time:</label>
+        <input type="number" id="preparation_time" name="preparation_time" required>
+    </div>
+     
+    <div class="input-field col s12 m4">
+        <label for="cooking_time" >Cooking Time:</label>
+        <input type="number" id="cooking_time" name="cooking_time" required>
+    </div>
+     
+    <div class="input-field col s12 m4">
+        <label for="servings" >Servings:</label>
+        <input type="number" id="servings" name="servings" required>
+    </div>
+
+    <div class="col s12 m6">
+        <label for="recipe_category" >Category:</label>
+        <select id="recipe_category" name="recipe_category" required>
+            <option value="" disabled selected>Choose your option</option>
+            {% for category in categories_list %}
+            <option value="{{category.id}}">{{category.category_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+        
+    <div class="col s12 m6">
+        <label for="recipe_course" >Course:</label>
+        <select id="recipe_course" name="recipe_course" required>
+            <option value="" disabled selected>Choose your option</option>
+            {% for course in courses_list %}
+            <option value="{{course.id}}">{{course.course_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+        
+    <div class="col s12 m6">
+        <label for="recipe_cuisine" >Cuisine:</label>
+        <select id="recipe_cuisine" name="recipe_cuisine" required>
+            <option value="" disabled selected>Choose your option</option>
+            {% for cuisine in cuisines_list %}
+            <option value="{{cuisine.id}}">{{cuisine.cuisine_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col s12 m6">
+        <label for="recipe_author" >Author:</label>
+        <select id="recipe_author" name="recipe_author" required>
+            <option value="" disabled selected>Choose your option</option>
+            {% for author in authors_list %}
+            <option value="{{author.id}}">{{author.author_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col s12">
+        <input type=file name=recipe_image>
+    </div>
+        
+    <div class="col s12">
+        <button class="btn waves-effect waves-light right" type="submit" name="action" onclick="M.toast({html: 'New Recipe Added!'})">Add Recipe
+            <i class="material-icons right">send</i>
+          </button>
+    </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html'%} {% block content %}
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul class=flashes>
+               {% for message in messages %}
+               <li>{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+    <div class="row">
+        <div class="card-panel teal lighten-5">
+        <h1>{{ recipe.recipe_name }}</h1>
+        <p>{{ recipe.recipe_description }}</p>
+        {% if recipe.user %}
+        <p>Submitted by: {{ recipe.user.username }}</p>
+        {% endif %}
+        {% if recipe.image_url %}
+        <img class="materialboxed responsive-img" src="{{ recipe.image_url }}" alt="{{ recipe.image_filename }}">
+        {% endif %}
+        <div class="col s12 m6">
+            <p><b>Category:</b> {{ recipe.category.category_name }}</p>
+            <p><b>Course:</b> {{ recipe.course.course_name }}</p>
+            <p><b>Cuisine:</b> {{ recipe.cuisine.cuisine_name }}</p>
+            <p><b>Author:</b> {{ recipe.author.author_name }}</p>
+        </div>
+        <div class="col s12 m6">
+            <p><b>Preparation Time:</b> {{ recipe.preparation_time }} Minutes</p>
+            <p><b>Cooking Time:</b> {{ recipe.cooking_time }} Minutes</p>
+            <p><b>Servings:</b> {{ recipe.servings }}</p>
+        </div>
+        <a class="btn-floating btn waves-effect waves-light teal" href="{{ url_for('save_recipe', id=recipe.id) }}"><i class="material-icons">star</i></a>
+        {% if recipe.user == current_user %}
+        <a class="btn-floating btn waves-effect waves-light teal" href="{{ url_for('edit_recipe', id=recipe.id) }}"><i class="material-icons">edit</i></a>
+        <a class="btn-floating btn waves-effect waves-light teal" href="{{ url_for('delete_recipe', id=recipe.id) }}" onclick="M.toast({html: 'Recipe Deleted!'})"><i class="material-icons">delete</i></a>
+        {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card-panel teal lighten-5">
+            <h3>Ingredients</h3>
+            {% if recipe.user == current_user %}
+            <a class="btn-floating btn-large waves-effect waves-light teal" href="{{ url_for('add_quantity', id=recipe.id) }}"><i class="material-icons">add</i></a>
+            {% endif %}
+            {% for quantity in quantity_list %}
+            <div class="row">
+                <div class="col s12 m8">
+                    <p>{{ quantity.quantity }} {{ quantity.measurement.measurement_name }} {{ quantity.ingredient.ingredient_name }}</p>
+                </div>
+                <div class="col s12 m4">
+                    {% if recipe.user == current_user %}
+                    <a class="btn-floating btn-small waves-effect waves-light teal" href="{{ url_for('edit_quantity', id=quantity.id) }}"><i class="material-icons">edit</i></a> <a class="btn-floating btn-small waves-effect waves-light teal" href="{{ url_for('delete_quantity', id=quantity.id) }}" onclick="M.toast({html: 'Ingredient Deleted!'})"><i class="material-icons">delete</i></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <div class="col s12 m8">
+            <div class="card-panel teal lighten-5">
+            <h3>Method</h3>
+            {% if recipe.user == current_user %}
+            <a class="btn-floating btn-large waves-effect waves-light teal" href="{{ url_for('add_method', id=recipe.id) }}"><i class="material-icons">add</i></a>
+            {% endif %}
+            {% for method in method_list %}
+            <div class="row">
+                <div class="col s12 m10">
+                    <p>{{ method.method_description }}</p>
+                </div>
+                <div class="col s12 m2">
+                    {% if recipe.user == current_user %}
+                    <a class="btn-floating btn-small waves-effect waves-light teal" href="{{ url_for('edit_method', id=method.id) }}"><i class="material-icons">edit</i></a> <a class="btn-floating btn-small waves-effect waves-light teal" href="{{ url_for('delete_method', id=method.id) }}" onclick="M.toast({html: 'Method Deleted!'})"><i class="material-icons">delete</i></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
