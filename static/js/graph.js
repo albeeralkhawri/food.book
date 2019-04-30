@@ -5,7 +5,6 @@ d3.queue()
 
 function makeGraphs(error, recipeData) {
     var ndx = crossfilter(recipeData);
-    console.log(recipeData);
     show_category_selector(ndx);
     show_category_graph(ndx);
 
