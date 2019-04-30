@@ -1,6 +1,6 @@
 ![picture](https://www.up-00.com/i/00118/ogsr2ldorpyo.jpeg)
 
-### <a href=""> *FooD Book* </a>
+### <a href="https://foods-book.herokuapp.com/"> *FooD Book* </a>
 ***
 ## UX
 
@@ -34,7 +34,7 @@ _This is a web application which that allows users to store and easily access co
 
 ## Demo
 
-A demo of this web application is available [here]().
+A demo of this web application is available <a href="https://foods-book.herokuapp.com/">here</a>.
 
 
 ## Getting started 
