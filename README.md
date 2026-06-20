@@ -77,3 +77,5 @@ The images for recipes were also taken from the google.
 - Image upload to AWS S3 with boto3 info from this [blog](http://zabana.me/notes/upload-files-amazon-s3-flask.html).
 Unit testing strategy from this [blog](https://www.patricksoftwareblog.com/unit-testing-a-flask-application/).
 - My thanks and appreciation to the [Code Institute](https://courses.codeinstitute.net/program/FullstackWebDeveloper) and to the cadre of teachers
+<a href="https://www.aadigitalworks.com/ie/wexford" rel="nofollow">Website Design Wexford</a>
+
